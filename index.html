@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detektif Tajwid</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    // Cegah layar login berkedip (flash) jika sudah login
+    (function() {
+      if (sessionStorage.getItem("loggedIn") === "true") {
+        document.write('<style>#login-overlay { display: none !important; }</style>');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- Overlay Login Formalitas -->
+  <div id="login-overlay" class="login-overlay">
+    <div class="login-card">
+      <div class="login-logo">🔍 Detektif Tajwid</div>
+      <h2>Selamat Datang</h2>
+      <p>Silakan masuk menggunakan nama bebas untuk mulai belajar</p>
+      <form id="login-form">
+        <div class="input-group">
+          <input type="text" id="login-username" placeholder="Nama Pengguna / Email" required autocomplete="off">
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Kata Sandi" required autocomplete="off">
+        </div>
+        <button type="submit" class="login-submit-btn">Masuk</button>
+      </form>
+      <div class="login-footer">Mari Bergabung dengan Tim Detektif Tajwid.</div>
+    </div>
+  </div>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+  <header class="navbar">
+
+    <div class="container nav-container">
+
+      <h1 class="logo">
+        Detektif Tajwid
+      </h1>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger">
+        ☰
+      </button>
+
+      <nav id="nav-menu">
+
+        <ul class="nav-links">
+
+          <li><a href="#hero">Beranda</a></li>
+          <li><a href="#masalah">Masalah</a></li>
+          <li><a href="#solusi">Solusi</a></li>
+          <li><a href="#fitur">Fitur</a></li>
+          <li><a href="#materi">Materi</a></li>
+          <li><a href="#tim">Tim</a></li>
+          <li><a href="#" id="logout-btn" style="display:none; color: #ef4444; font-weight: bold;">Keluar</a></li>
+
+        </ul>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- =========================
+       HERO SECTION
+  ========================== -->
+  <section id="hero" class="hero section">
+
+    <div class="container hero-image-only">
+
+      <a href="belajar.html" class="hero-image-link" title="Mulai Belajar Detektif Tajwid">
+        <img
+          src="https://i.ibb.co.com/C393FFGT/Detektif-tajwid-adalah-aplikasi-pembelajaran-ilmu-tajwid-berbasis-Android-yang-dirancang-untuk-memba.png"
+          alt="Detektif Tajwid Banner"
+          class="hero-image"
+        >
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       MASALAH
+  ========================== -->
+  <section id="masalah" class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="section-badge">
+          Permasalahan
+        </span>
+
+        <h2>
+          Susahnya Pemahaman Tajwid pada Siswa Pembaca Al-Qur’an
+        </h2>
+
+        <p>
+          Banyak siswa masih mengalami kesulitan dalam memahami dan menerapkan
+          hukum tajwid saat membaca Al-Qur’an karena metode pembelajaran yang
+          kurang interaktif serta terbatasnya media belajar yang menarik.
+        </p>
+
+      </div>
+
+      <div class="card-grid">
+
+        <!-- CARD -->
+        <div class="card reveal">
+
+          <div class="card-icon">
+            📖
+          </div>
+
+          <h3>
+            Teori Sulit Dipahami
+          </h3>
+
+          <p>
+            Pembelajaran tajwid sering kali hanya berupa teori sehingga
+            siswa kesulitan memahami cara membaca secara langsung.
+          </p>
+
+        </div>
+
+        <!-- CARD -->
+        <div class="card reveal">
+
+          <div class="card-icon">
+            💻
+          </div>
+
+          <h3>
+            Kurang Media Interaktif
+          </h3>
+
+          <p>
+            Kurangnya media digital yang menarik membuat siswa cepat bosan
+            saat belajar tajwid.
+          </p>
+
+        </div>
+
+        <!-- CARD -->
+        <div class="card reveal">
+
+          <div class="card-icon">
+            🎯
+          </div>
+
+          <h3>
+            Minat Belajar Rendah
+          </h3>
+
+          <p>
+            Metode pembelajaran yang monoton menyebabkan minat belajar
+            Al-Qur’an menjadi rendah.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- TARGET -->
+      <div class="target-box reveal">
+
+        <h3>
+          Target Pengguna
+        </h3>
+
+        <p>
+          Siswa sekolah dasar, remaja muslim, serta masyarakat umum yang ingin
+          belajar membaca Al-Qur’an dengan tajwid yang benar.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SOLUSI
+  ========================== -->
+  <section id="solusi" class="section section-bg">
+
+    <div class="container solution-grid">
+
+      <!-- GAMBAR -->
+      <div class="solution-image-wrapper">
+
+        <img
+          src="https://i.ibb.co.com/tMm4K2cZ/Chat-GPT-Image-May-19-2026-10-43-51-PM.png"
+          alt="Gambar Solusi"
+          class="solution-image"
+        >
+
+      </div>
+
+      <!-- TEXT -->
+      <div class="solution-text">
+
+        <span class="section-badge">
+          Solusi
+        </span>
+
+        <h2>
+          Aplikasi Pembelajaran Tajwid Interaktif Berbasis Android
+        </h2>
+
+        <p>
+          Detektif Tajwid hadir sebagai aplikasi pembelajaran yang menyediakan
+          materi tajwid secara sistematis, dilengkapi contoh bacaan Al-Qur’an,
+          video pembelajaran, latihan soal, dan kuis interaktif.
+        </p>
+
+        <p>
+          Pengguna dapat mempelajari materi secara mandiri, melihat contoh
+          bacaan, lalu mengerjakan latihan dan kuis untuk menguji pemahaman.
+        </p>
+
+        <ul class="benefit-list">
+
+          <li>Membantu memahami hukum tajwid lebih mudah.</li>
+          <li>Meningkatkan minat belajar Al-Qur’an.</li>
+          <li>Membantu memperbaiki kualitas bacaan.</li>
+          <li>Belajar tajwid menjadi lebih interaktif.</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FITUR
+  ========================== -->
+  <section id="fitur" class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="section-badge">
+          Fitur Aplikasi
+        </span>
+
+        <h2>
+          Fitur Unggulan Detektif Tajwid
+        </h2>
+
+        <p>
+          Aplikasi Detektif Tajwid menghadirkan berbagai fitur pembelajaran
+          interaktif yang membantu pengguna memahami ilmu tajwid secara
+          sistematis dan menyenangkan.
+        </p>
+
+      </div>
+
+      <div class="feature-grid">
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            📚
+          </div>
+
+          <h3>
+            Materi Tajwid Lengkap
+          </h3>
+
+          <p>
+            Materi terdiri dari Bab 1 sampai Bab 7 mulai dari pengantar tajwid,
+            makhorijul huruf, sifat huruf, hukum nun sukun, mim sukun,
+            qolqolah, hingga hukum mad.
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            🎥
+          </div>
+
+          <h3>
+            Video Pembelajaran
+          </h3>
+
+          <p>
+            Menyediakan video pembelajaran tajwid yang menarik dan mudah
+            dipahami untuk membantu pengguna memahami materi.
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            📝
+          </div>
+
+          <h3>
+            Kuis Interaktif
+          </h3>
+
+          <p>
+            Pengguna dapat mengerjakan latihan dan kuis untuk menguji
+            pemahaman materi tajwid secara langsung.
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            🎮
+          </div>
+
+          <h3>
+            Game Edukatif
+          </h3>
+
+          <p>
+            Belajar tajwid melalui permainan edukatif yang menyenangkan dan
+            tidak membosankan.
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            📈
+          </div>
+
+          <h3>
+            Pembelajaran Sistematis
+          </h3>
+
+          <p>
+            Materi disusun secara bertahap mulai dari dasar hingga lanjutan
+            agar mudah dipahami semua pengguna.
+          </p>
+
+        </div>
+
+        <!-- FEATURE -->
+        <div class="feature-card reveal">
+
+          <div class="feature-icon">
+            📱
+          </div>
+
+          <h3>
+            Akses Mudah
+          </h3>
+
+          <p>
+            Aplikasi dapat digunakan kapan saja dan di mana saja melalui
+            smartphone Android.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+     MATERI
+========================== -->
+<section id="materi" class="section section-bg">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <span class="section-badge">
+        Materi Tajwid
+      </span>
+
+      <h2>
+        Materi Pembelajaran Tajwid
+      </h2>
+
+      <p>
+        Pelajari seluruh materi tajwid secara lengkap mulai dari dasar
+        hingga hukum mad melalui video pembelajaran interaktif.
+      </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+      <!-- BAB 1 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 1 – Pengertian Tajwid
+          </h3>
+          <span class="materi-badge badge-kuis">📝 Kuis</span>
+        </div>
+
+        <p>
+          Mempelajari pengertian tajwid, hukum mempelajarinya,
+          dan pentingnya membaca Al-Qur’an sesuai kaidah tajwid.
+        </p>
+
+        <a
+          href="belajar.html#bab1"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 2 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 2 – Makhorijul Huruf
+          </h3>
+          <div class="badge-group">
+            <span class="materi-badge badge-game">🎮 Game</span>
+            <span class="materi-badge badge-kuis">📝 Kuis</span>
+          </div>
+        </div>
+
+        <p>
+          Mengenal tempat keluarnya huruf hijaiyah dari tenggorokan,
+          lidah, bibir, rongga mulut, dan hidung.
+        </p>
+
+        <a
+          href="belajar.html#bab2"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 3 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 3 – Sifat-Sifat Huruf
+          </h3>
+          <span class="materi-badge badge-kuis">📝 Kuis</span>
+        </div>
+
+        <p>
+          Memahami sifat-sifat huruf hijaiyah seperti jahr,
+          hams, syiddah, dan sifat lainnya dalam ilmu tajwid.
+        </p>
+
+        <a
+          href="belajar.html#bab3"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 4 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 4 – Hukum Nun Sukun
+          </h3>
+          <span class="materi-badge badge-kuis">📝 Kuis</span>
+        </div>
+
+        <p>
+          Belajar hukum Izhar, Idgham, Ikhfa,
+          dan Iqlab pada nun sukun serta tanwin.
+        </p>
+
+        <a
+          href="belajar.html#bab4"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 5 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 5 – Hukum Mim Sukun
+          </h3>
+          <div class="badge-group">
+            <span class="materi-badge badge-game">🎮 Game</span>
+            <span class="materi-badge badge-kuis">📝 Kuis</span>
+          </div>
+        </div>
+
+        <p>
+          Memahami hukum Mim Mati seperti Ikhfa Syafawi,
+          Idgham Mimi, dan Izhar Syafawi.
+        </p>
+
+        <a
+          href="belajar.html#bab5"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 6 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 6 – Qolqolah & Lam
+          </h3>
+          <div class="badge-group">
+            <span class="materi-badge badge-game">🎮 Game</span>
+            <span class="materi-badge badge-kuis">📝 Kuis</span>
+          </div>
+        </div>
+
+        <p>
+          Mempelajari hukum Qolqolah (pantulan) serta cara membaca lam tipis (tarqiq)
+          dan lam tebal (tafkhim) sesuai kaidah tajwid.
+        </p>
+
+        <a
+          href="belajar.html#bab6"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+      <!-- BAB 7 -->
+      <div class="feature-card reveal">
+
+        <div class="materi-header">
+          <h3>
+            Bab 7 – Hukum Mad
+          </h3>
+          <div class="badge-group">
+            <span class="materi-badge badge-game">🎮 Game</span>
+            <span class="materi-badge badge-kuis">📝 Kuis</span>
+          </div>
+        </div>
+
+        <p>
+          Belajar hukum mad seperti Mad Thabi’i,
+          Mad Wajib Muttasil, Mad Jaiz Munfasil,
+          dan berbagai jenis mad lainnya.
+        </p>
+
+        <a
+          href="belajar.html#bab7"
+          class="btn small-btn"
+        >
+          📖 Mulai Belajar
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+  <!-- =========================
+       TIM
+  ========================== -->
+  <section id="tim" class="section">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span class="section-badge">
+          Tim Pengembang
+        </span>
+
+        <h2>
+          TIM DETEKTIF LABORATORIUM
+        </h2>
+
+        <p>
+          Tim pengembang Detektif Tajwid yang berkomitmen menghadirkan
+          inovasi pembelajaran Al-Qur’an berbasis digital.
+        </p>
+
+      </div>
+
+      <div class="team-grid">
+
+        <!-- TEAM -->
+        <div class="team-card reveal">
+
+          <img
+            src="https://i.ibb.co.com/S4gwbnYG/Whats-App-Image-2026-04-22-at-07-52-52.jpg"
+            alt="Abdul Azzam"
+            class="team-image"
+          >
+
+          <h3>
+            Abdul Azzam
+          </h3>
+
+          <p>
+            Ketua Kelompok
+          </p>
+
+        </div>
+
+        <!-- TEAM -->
+        <div class="team-card reveal">
+
+          <img
+            src="https://i.ibb.co.com/Y46c7f8P/Whats-App-Image-2026-04-22-at-08-02-38.jpg"
+            alt="Muammar"
+            class="team-image"
+          >
+
+          <h3>
+            Muammar
+          </h3>
+
+          <p>
+            Anggota 1
+          </p>
+
+        </div>
+
+        <!-- TEAM -->
+        <div class="team-card reveal">
+
+          <img
+            src="https://i.ibb.co.com/9md30PsC/Whats-App-Image-2026-04-28-at-13-26-00.jpg"
+            alt="Aulia"
+            class="team-image"
+          >
+
+          <h3>
+            Aulia Putri Joana RM
+          </h3>
+
+          <p>
+            Anggota 2
+          </p>
+
+        </div>
+
+        <!-- TEAM -->
+        <div class="team-card reveal">
+
+          <img
+            src="https://i.ibb.co.com/jP1wnwXD/Whats-App-Image-2026-04-22-at-08-01-44.jpg"
+            alt="Indri"
+            class="team-image"
+          >
+
+          <h3>
+            Indri Anantasya
+          </h3>
+
+          <p>
+            Anggota 3
+          </p>
+
+        </div>
+
+        <!-- TEAM -->
+        <div class="team-card reveal">
+
+          <img
+            src="https://i.ibb.co.com/n8QbKzmq/Whats-App-Image-2026-04-22-at-08-04-34.jpg"
+            alt="Aisyah"
+            class="team-image"
+          >
+
+          <h3>
+            Aisyah Mu’minatusyahidah
+          </h3>
+
+          <p>
+            Anggota 5
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer class="footer">
+
+    <div class="container">
+
+      <h3>
+        KELOMPOK 2 - Detektif Hudzaifah
+      </h3>
+
+      <p>
+        Program Studi Pendidikan Agama Islam
+        Universitas Muhammadiyah Yogyakarta
+      </p>
+
+      <p>
+        Dikembangkan dalam mata kuliah pengembangan aplikasi pembelajaran
+        sebagai media pembelajaran tajwid berbasis digital.
+      </p>
+
+      <p>
+        © 2026 Detektif Tajwid
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    // Logika Login Overlay (Formalitas)
+    const loginOverlay = document.getElementById("login-overlay");
+    const loginForm = document.getElementById("login-form");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    // Tampilkan tombol logout jika sudah login
+    if (sessionStorage.getItem("loggedIn") === "true") {
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+      if (loginOverlay) loginOverlay.style.display = "none";
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        // Simpan status login
+        sessionStorage.setItem("loggedIn", "true");
+        
+        // Sembunyikan overlay dengan transisi memudar
+        if (loginOverlay) {
+          loginOverlay.classList.add("hidden");
+          setTimeout(() => {
+            loginOverlay.style.display = "none";
+          }, 500);
+        }
+        
+        // Tampilkan tombol logout
+        if (logoutBtn) logoutBtn.style.display = "inline-block";
+      });
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        // Hapus status login
+        sessionStorage.removeItem("loggedIn");
+        
+        // Tampilkan kembali overlay
+        if (loginOverlay) {
+          loginOverlay.style.display = "flex";
+          // Memicu reflow agar transisi berfungsi
+          loginOverlay.offsetHeight;
+          loginOverlay.classList.remove("hidden");
+        }
+        
+        // Sembunyikan tombol logout
+        logoutBtn.style.display = "none";
+      });
+    }
+  </script>
+
+</body>
+</html>

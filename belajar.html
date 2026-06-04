@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Tajwid Lengkap - Detektif Tajwid</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --primary-light: #ccfbf1;
+      --secondary: #14b8a6;
+      --secondary-light: #f0fdfa;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #334155;
+      --text-dark: #0f172a;
+      --border: #e2e8f0;
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 8px rgba(15, 118, 110, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(15, 118, 110, 0.1);
+      --shadow-lg: 0 20px 40px -15px rgba(15, 118, 110, 0.15);
+      
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f5f9;
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* HEADER & BRANDING */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* NAVBAR HEADER */
+    .top-nav {
+      background: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .top-nav .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-nav .btn-back {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+
+    .top-nav .btn-back:hover {
+      background: var(--light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-logout {
+      background: none;
+      border: 1px solid #fee2e2;
+      color: #ef4444;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: none;
+      font-size: 0.85rem;
+    }
+
+    .btn-logout:hover {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+
+    /* LOGIN OVERLAY STYLING */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 16px;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    
+    .login-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .login-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 400px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+
+    .login-logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .login-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .input-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+    }
+
+    .login-submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .login-submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    .login-footer {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 15px;
+      line-height: 1.4;
+    }
+
+    /* MAIN CONTAINER LAYOUT */
+    .dashboard-container {
+      max-width: 1280px;
+      margin: 25px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    /* STICKY SIDEBAR NAVIGATION (DESKTOP) */
+    .sidebar {
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-menu-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+
+    .sidebar h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .nav-item {
+      width: 100%;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      text-align: left;
+      cursor: pointer;
+      background: none;
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover {
+      background: var(--light);
+      color: var(--primary);
+    }
+
+    .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-color: rgba(15, 118, 110, 0.15);
+    }
+
+    .nav-link-num {
+      background: rgba(15, 118, 110, 0.08);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .nav-link.active .nav-link-num {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    /* NESTED SUB-BAB NAVIGATION */
+    .subnav-list {
+      list-style: none;
+      padding-left: 15px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      border-left: 2px solid var(--border);
+      margin-left: 32px;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .nav-item.active-accordion .subnav-list {
+      display: flex;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subnav-link {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 0.85rem;
+      text-align: left;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 6px;
+      width: 100%;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: normal;
+      line-height: 1.4;
+    }
+
+    .subnav-link:hover {
+      background: var(--light);
+      color: var(--primary);
+    }
+
+    .subnav-link.active-sub {
+      color: var(--primary-dark);
+      font-weight: 600;
+      background: var(--primary-light);
+    }
+
+    /* CONTENT PANEL */
+    .content-panel {
+      background: white;
+      border-radius: var(--radius);
+      padding: 35px;
+      box-shadow: var(--shadow-lg);
+      min-height: 500px;
+    }
+
+    .bab-section {
+      display: none;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .bab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CONTENT STYLING */
+    .bab-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      border-bottom: 4px solid var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      line-height: 1.3;
+    }
+
+    .ringkasan {
+      background: var(--secondary-light);
+      border-left: 5px solid var(--secondary);
+      padding: 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 30px;
+    }
+
+    .ringkasan h4 {
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .subbab {
+      margin-top: 25px;
+      padding: 20px;
+      background: var(--light);
+      border-radius: 14px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .subbab h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--dark);
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+
+    .subbab h4 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+      font-size: 1.05rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    p {
+      margin-bottom: 16px;
+      text-align: justify;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* ARABIC TEXT CONFIG - FULLY RESPONSIVE FOR PORTRAIT MOBLIE */
+    .arab {
+      font-family: 'Amiri', serif;
+      direction: rtl;
+      text-align: right;
+      font-size: 1.8rem;
+      margin: 10px 0;
+      color: var(--dark);
+      font-weight: 700;
+      background: #ecfdf5;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #d1fae5;
+      display: inline-block;
+      max-width: 100%;
+      white-space: normal; 
+      word-break: break-word; 
+      overflow-wrap: break-word;
+    }
+
+    .arab-box {
+      text-align: right;
+      margin: 12px 0;
+      max-width: 100%;
+      display: block;
+    }
+
+    .contoh-box {
+      background: #f8fafc;
+      border: 1px dashed var(--border);
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      word-wrap: break-word;
+    }
+
+    .catatan-box {
+      background: #fffbeb;
+      border-left: 5px solid var(--accent);
+      padding: 15px 20px;
+      border-radius: 0 10px 10px 0;
+      margin: 15px 0;
+      font-size: 0.9rem;
+    }
+
+    /* IMAGES */
+    .materi-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      border: 3px solid white;
+    }
+
+    /* VIDEO SECTION */
+    .video-container {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-top: 30px;
+      border: 1px solid var(--border);
+    }
+
+    .video-container h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 15px;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* VIDEO CLIP CONTROLS */
+    .video-shortcuts-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .video-shortcuts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-seek {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-seek:hover {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-color: rgba(15, 118, 110, 0.3);
+    }
+
+    .btn-seek svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    /* INTERACTIVE ACTIVITIES SECTION */
+    .activity-section {
+      margin-top: 35px;
+      border-top: 2px dashed var(--border);
+      padding-top: 25px;
+    }
+
+    .activity-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .activity-grid.single {
+      grid-template-columns: 1fr;
+    }
+
+    .activity-card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .activity-card.game::before { background: var(--secondary); }
+    .activity-card.quiz::before { background: var(--accent); }
+
+    .activity-info h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-info p {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .activity-btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-align: center;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+
+    .activity-btn.game-btn { background: var(--secondary); color: white; }
+    .activity-btn.game-btn:hover { background: var(--primary-dark); }
+    .activity-btn.quiz-btn { background: var(--accent); color: white; }
+    .activity-btn.quiz-btn:hover { background: #d97706; }
+
+    /* FLOATING AI CHAT WIDGET */
+    .ai-chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .ai-chat-button {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(15, 118, 110, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: var(--transition);
+    }
+
+    .ai-chat-window {
+      position: absolute;
+      bottom: 65px;
+      right: 0;
+      width: 320px;
+      height: 440px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .ai-chat-window.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .ai-chat-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ai-chat-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ai-chat-close {
+      background: none;
+      border: none;
+      color: white;
+      opacity: 0.7;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .ai-chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .chat-bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
+    .chat-bubble.ai {
+      background: white;
+      color: var(--text-dark);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+
+    .chat-bubble.user {
+      background: var(--primary);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .ai-chat-input-area {
+      padding: 12px;
+      background: white;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .ai-chat-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      background: #f8fafc;
+    }
+
+    .ai-chat-send {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 14px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      border-top: 5px solid var(--primary);
+    }
+
+    footer p {
+      text-align: center;
+      margin-bottom: 0;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+    /* ========================================================= */
+    /* RESPONSIVE LAYOUTS & MEDIA QUERIES (HP PORTRAIT RE-STYLING)*/
+    /* ========================================================= */
+    @media (max-width: 992px) {
+      .dashboard-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 0 12px;
+      }
+      
+      .sidebar {
+        position: sticky;
+        top: 60px; 
+        z-index: 90;
+        max-height: none;
+        background: #f1f5f9;
+        margin: 0 -12px; 
+        padding: 8px 12px;
+        gap: 0;
+      }
+
+      .sidebar-menu-card {
+        max-height: none;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible;
+      }
+
+      .sidebar h2 {
+        display: none; 
+      }
+
+      /* Horizontal Bar Scroll Smooth & Clean */
+      .nav-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 6px 2px 10px 2px;
+        scroll-snap-type: x mandatory;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; 
+      }
+      
+      .nav-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-item {
+        scroll-snap-align: start;
+        flex: 0 0 auto;
+        width: auto;
+      }
+
+      .nav-link {
+        white-space: nowrap;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        background: white;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border);
+        border-radius: 20px; 
+      }
+      
+      .nav-link.active {
+        border-color: var(--primary);
+        background: var(--primary);
+        color: white;
+      }
+
+      .nav-link-num {
+        width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+        background: rgba(15, 118, 110, 0.1);
+        color: var(--primary);
+      }
+
+      .nav-link.active .nav-link-num {
+        background: white;
+        color: var(--primary-dark);
+      }
+
+      /* Sembunyikan subnav di mobile, ganti dengan scroll horizontal murni */
+      .subnav-list {
+        display: none !important;
+      }
+
+      .content-panel {
+        padding: 20px 14px;
+        min-height: auto;
+        box-shadow: var(--shadow-sm);
+        border-radius: 12px;
+      }
+      
+      .subbab {
+        padding: 16px;
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
+      .arab {
+        font-size: 1.55rem;
+        padding: 10px 14px;
+      }
+      
+      .activity-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 30px 15px;
+      }
+
+      header h1 {
+        font-size: 1.75rem;
+      }
+      
+      header p {
+        font-size: 0.85rem;
+      }
+
+      .bab-title {
+        font-size: 1.35rem;
+        margin-bottom: 18px;
+        padding-bottom: 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-nav {
+        padding: 12px 12px;
+      }
+      
+      .top-nav .logo {
+        font-size: 1.1rem;
+      }
+      
+      .top-nav .btn-back {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+      }
+      
+      .ai-chat-window {
+        width: calc(100vw - 32px);
+        right: -10px;
+        bottom: 65px;
+        height: 380px;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
+
+      .contoh-box {
+        padding: 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      if (sessionStorage.getItem("loggedIn") === "true") {
+        document.write('<style>#login-overlay { display: none !important; }</style>');
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="login-overlay" class="login-overlay">
+    <div class="login-card">
+      <div class="login-logo">🔍 Detektif Tajwid</div>
+      <h2>Selamat Datang</h2>
+      <p>Silakan masuk menggunakan nama bebas untuk mulai belajar</p>
+      <form id="login-form">
+        <div class="input-group">
+          <input type="text" id="login-username" placeholder="Nama Pengguna / Email" required autocomplete="off">
+        </div>
+        <div class="input-group">
+          <input type="password" id="login-password" placeholder="Kata Sandi" required autocomplete="off">
+        </div>
+        <button type="submit" class="login-submit-btn">Masuk</button>
+      </form>
+      <div class="login-footer">Demo formalitas - Tanpa database. Masukkan kredensial apa saja.</div>
+    </div>
+  </div>
+
+  <nav class="top-nav">
+    <a href="index.html" class="logo">🔍 Detektif Tajwid</a>
+    <div class="nav-actions">
+      <a href="index.html" class="btn-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Beranda
+      </a>
+      <button id="logout-btn" class="btn-logout">Keluar</button>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Pusat Belajar Tajwid</h1>
+    <p>
+      E-learning interaktif untuk memahami cara membaca Al-Qur’an secara fasih, 
+      benar, dan berpedoman pada kaidah tajwid yang benar.
+    </p>
+  </header>
+
+  <div class="dashboard-container">
+
+    <aside class="sidebar">
+      <div class="sidebar-menu-card">
+        <h2>Daftar Bab</h2>
+        <ul class="nav-list">
+          <li class="nav-item active-accordion" id="nav-item-bab1">
+            <button class="nav-link active" onclick="switchBab('bab1')">
+              <span class="nav-link-num">1</span>Pengantar Tajwid
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab1', 'subbab1-1')">1.1 Pengertian Tajwid</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab1', 'subbab1-2')">1.2 Hukum Mempelajari</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab1', 'subbab1-3')">1.3 Tujuan Membaca</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab2">
+            <button class="nav-link" onclick="switchBab('bab2')">
+              <span class="nav-link-num">2</span>Makhorijul Huruf
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab2', 'subbab2-1')">2.1 Tempat Keluar</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab2', 'subnav-2')">2.2 Pembagian Makhroj</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab3">
+            <button class="nav-link" onclick="switchBab('bab3')">
+              <span class="nav-link-num">3</span>Sifat-Sifat Huruf
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab3', 'subbab3-1')">3.1 Pengertian Sifat</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab3', 'subbab3-2')">3.2 Sifat Lazimah</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab3', 'subbab3-3')">3.3 Sifat 'Aridhah</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab4">
+            <button class="nav-link" onclick="switchBab('bab4')">
+              <span class="nav-link-num">4</span>Nun Sukun & Tanwin
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab4', 'subbab4-1')">4.1 Idzhar Halqi</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab4', 'subbab4-2')">4.2 Idgham Bi Ghunnah</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab4', 'subbab4-3')">4.3 Idgham Bila Ghunnah</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab4', 'subnav-4')">4.4 Iqlab</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab4', 'subbab4-5')">4.5 Ikhfa' Haqiqi</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab5">
+            <button class="nav-link" onclick="switchBab('bab5')">
+              <span class="nav-link-num">5</span>Hukum Mim Sukun
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab5', 'subbab5-1')">5.1 Pengertian Mim Mati</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab5', 'subbab5-2')">5.2 Ikhfa Syafawi</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab5', 'subnav-3')">5.3 Izhar Syafawi</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab5', 'subbab5-4')">5.4 Idgham Mimi</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab6">
+            <button class="nav-link" onclick="switchBab('bab6')">
+              <span class="nav-link-num">6</span>Qolqolah & Lam
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab6', 'subbab6-1')">6.1 Pengertian Qolqolah</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab6', 'subbab6-2')">6.2 Lam Tebal & Tipis</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-item-bab7">
+            <button class="nav-link" onclick="switchBab('bab7')">
+              <span class="nav-link-num">7</span>Hukum Mad
+            </button>
+            <ul class="subnav-list">
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subbab7-1')">7.1 Pengertian Mad</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subbab7-2')">7.2 Mad Thabi’i</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subbab7-3')">7.3 Mad Badal</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subnav-4')">7.4 Mad Wajib Muttasil</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subnav-5')">7.5 Mad Jaiz Munfasil</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subnav-6')">7.6 Mad 'Aridh Lissukun</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subnav-7')">7.7 Mad Lin</button></li>
+              <li><button class="subnav-link" onclick="scrollToSubbab('bab7', 'subbab7-8')">7.8 Mad Lazim</button></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content-panel">
+
+      <section class="bab-section active" id="bab1">
+        <h2 class="bab-title">Bab 1: Pengantar Tajwid</h2>
+          
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 1</h4>
+          <p>
+            Bab ini membahas pengenalan dasar tentang ilmu tajwid,
+            pentingnya membaca Al-Qur’an sesuai kaidah yang benar,
+            serta hukum mempelajari tajwid bagi setiap muslim.
+          </p>
+        </div>
+
+        <div class="subbab" id="subbab1-1">
+          <h3>Subbab 1.1: Pengertian Tajwid</h3>
+          <p>
+            Tajwid secara bahasa berasal dari kata <em>jawwada</em> yang berarti memperindah atau memperbaiki.
+            Dalam konteks membaca Al-Qur’an, tajwid adalah ilmu yang mengajarkan cara melafalkan
+            huruf-huruf hijaiyah dengan benar sesuai dengan tempat keluarnya (makhraj)
+            serta sifat-sifatnya.
+          </p>
+          <p>
+            Secara sederhana, tajwid dapat dipahami sebagai aturan membaca Al-Qur’an dengan baik dan benar,
+            sehingga setiap huruf terdengar jelas dan tidak berubah maknanya.
+            Membaca tanpa tajwid berpotensi menimbulkan kesalahan dalam pengucapan
+            yang bisa memengaruhi arti ayat.
+          </p>
+        </div>
+
+        <div class="subbab" id="subbab1-2">
+          <h3>Subbab 1.2: Hukum Mempelajari Tajwid</h3>
+          <p>
+            Mempelajari ilmu tajwid hukumnya <strong>fardhu kifayah</strong>,
+            artinya cukup sebagian umat Islam saja yang mendalaminya.
+            Namun, mengamalkan tajwid saat membaca Al-Qur’an hukumnya <strong>fardhu ‘ain</strong>,
+            yaitu wajib bagi setiap individu muslim yang membaca Al-Qur'an.
+          </p>
+          <p>
+            Hal ini karena Al-Qur’an merupakan kalam Allah yang harus dijaga keasliannya,
+            termasuk dalam cara membacanya.
+            Kesalahan dalam membaca bisa menyebabkan perubahan makna,
+            sehingga penting bagi setiap muslim untuk berusaha membaca dengan benar sesuai kaidah.
+          </p>
+        </div>
+
+        <div class="subbab" id="subbab1-3">
+          <h3>Subbab 1.3: Tujuan Membaca Al-Qur’an dengan Tajwid</h3>
+          <ul>
+            <li>
+              <strong>Menjaga keaslian bacaan Al-Qur’an</strong><br>
+              Dengan tajwid, bacaan tetap sesuai dengan yang diajarkan oleh Rasulullah ﷺ.
+            </li>
+            <li>
+              <strong>Menghindari kesalahan (lahn)</strong><br>
+              Kesalahan dalam membaca bisa terjadi secara jelas maupun samar,
+              dan tajwid membantu meminimalisirnya.
+            </li>
+            <li>
+              <strong>Memperindah bacaan Al-Qur’an</strong><br>
+              Bacaan menjadi lebih tartil (teratur, jelas, dan enak didengar).
+            </li>
+            <li>
+              <strong>Meningkatkan pemahaman dan kekhusyukan</strong><br>
+              Membaca dengan benar membantu lebih menghayati makna ayat.
+            </li>
+            <li>
+              <strong>Sebagai bentuk ibadah</strong><br>
+              Membaca Al-Qur’an dengan baik bernilai pahala dan menunjukkan penghormatan terhadap kitab suci.
+            </li>
+          </ul>
+        </div>
+
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 1</h3>
+          <div class="video-wrapper">
+            <iframe id="video-bab1" src="https://www.youtube.com/embed/BxYDZUmuw9w" allowfullscreen></iframe>
+          </div>
+          <div class="video-shortcuts-title">Lompat ke Topik Pembelajaran:</div>
+          <div class="video-shortcuts">
+            <button class="btn-seek" onclick="seekVideo('video-bab1', 'BxYDZUmuw9w', 0)">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 00:00 - Intro
+            </button>
+            <button class="btn-seek" onclick="seekVideo('video-bab1', 'BxYDZUmuw9w', 76)">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 01:16 - Pengertian
+            </button>
+            <button class="btn-seek" onclick="seekVideo('video-bab1', 'BxYDZUmuw9w', 190)">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> 03:10 - Hukum
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-section">
+          <h3 class="activity-section-title">📝 Latihan & Uji Pemahaman</h3>
+          <div class="activity-grid single">
+            <div class="activity-card quiz">
+              <div class="activity-info">
+                <h4>📝 Kuis Tajwid - Bab 1</h4>
+                <p>Uji pemahaman Anda tentang pengertian dan hukum tajwid melalui kuis interaktif seru berikut.</p>
+              </div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab2">
+        <h2 class="bab-title">Bab 2: Makhorijul Huruf</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 2</h4>
+          <p>Makharijul huruf adalah tempat keluarnya huruf-huruf hijaiyah saat diucapkan. Memahami makhraj sangat penting agar pengucapan huruf fasih dan tidak tertukar.</p>
+        </div>
+        <img src="https://i.ibb.co.com/5XmYnGgV/Chat-GPT-Image-May-13-2026-03-17-06-PM.png" alt="Gambar Makhorijul Huruf 1" class="materi-image">
+        <img src="https://i.ibb.co.com/spMHgCTB/Chat-GPT-Image-May-13-2026-10-36-54-AM.png" alt="Gambar Makhorijul Huruf 2" class="materi-image">
+        <div class="subbab" id="subbab2-1">
+          <h3>Subbab 2.1: Tempat Keluarnya Huruf Hijaiyah</h3>
+          <p>Makharijul huruf didefinisikan sebagai tempat-tempat di mana suara huruf hijaiyah terbentuk ketika diucapkan. Tanpa memahami makhraj yang benar, kesalahan pengucapan huruf dapat berakibat fatal pada makna.</p>
+        </div>
+        <div class="subbab" id="subnav-2">
+          <h3>Subbab 2.2: Pembagian Makhroj Utama</h3>
+          <h4>A. Huruf yang Keluar dari Dua Bibir (Asy-Syafatain)</h4>
+          <ul>
+            <li><strong>Huruf Fa’ (ف)</strong>: Ujung gigi seri atas ditekan secara lembut ke bagian dalam bibir bawah.</li>
+            <li><strong>Huruf Wau (و)</strong>: Merenggangkan dua bibir dengan sedikit memoncongkannya.</li>
+            <li><strong>Huruf Ba’ (ب)</strong>: Kedua bibir dirapatkan secara kuat.</li>
+            <li><strong>Huruf Mim (م)</strong>: Kedua bibir dirapatkan secara lembut/ringan.</li>
+          </ul>
+          <h4>B. Pembagian Makhroj Utama Lainnya</h4>
+          <ul>
+            <li><strong>Al-Jauf</strong>: Rongga Mulut & Tenggorokan untuk huruf panjang mad.</li>
+            <li><strong>Al-Halq</strong>: Tenggorokan untuk huruf Hamzah, Ha', 'Ain, Ha, Ghain, Kha.</li>
+            <li><strong>Al-Lisan</strong>: Lidah untuk sebagian besar huruf hijaiyah.</li>
+            <li><strong>Al-Khaisyum</strong>: Pangkal Hidung untuk bunyi dengung (Ghunnah).</li>
+          </ul>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 2</h3>
+          <div class="video-wrapper"><iframe id="video-bab2" src="https://www.youtube.com/embed/SrzQYclSt5g" allowfullscreen></iframe></div>
+          <div class="video-shortcuts">
+            <button class="btn-seek" onclick="seekVideo('video-bab2', 'SrzQYclSt5g', 0)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Intro</button>
+            <button class="btn-seek" onclick="seekVideo('video-bab2', 'SrzQYclSt5g', 105)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Bibir</button>
+            <button class="btn-seek" onclick="seekVideo('video-bab2', 'SrzQYclSt5g', 250)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Halq</button>
+          </div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid">
+            <div class="activity-card game">
+              <div class="activity-info"><h4>🎮 Game Makhraj</h4><p>Cocokkan letak makhraj secara interaktif.</p></div>
+              <a href="https://gemini.google.com/share/fa745cfa5243" target="_blank" class="activity-btn game-btn">Main Game</a>
+            </div>
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 2</h4><p>Uji ketepatan makhraj huruf Anda.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab3">
+        <h2 class="bab-title">Bab 3: Sifat-Sifat Huruf</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 3</h4>
+          <p>Karakteristik atau watak yang melekat pada huruf ketika diucapkan, berfungsi membedakan huruf yang keluar dari makhraj yang sama.</p>
+        </div>
+        <img src="https://i.ibb.co.com/F4cSMXWw/IMG-5930-PNG.jpg" alt="Gambar Sifat Huruf" class="materi-image">
+        <div class="subbab" id="subbab3-1">
+          <h3>Subbab 3.1: Pengertian Sifat Huruf</h3>
+          <p>Sifat huruf terbagi menjadi <strong>Sifat Lazimah</strong> (selalu melekat asli) dan <strong>Sifat 'Aridhah</strong> (kondisional sewaktu-waktu).</p>
+        </div>
+        <div class="subbab" id="subbab3-2">
+          <h3>Subbab 3.2: Sifat Lazimah</h3>
+          <h4>1. Hams vs Jahr</h4>
+          <div class="contoh-box">Hams (Mengalir): <div class="arab-box"><span class="arab">فَحَثَّهُ شَخْصٌ سَكَتَ</span></div></div>
+          <h4>2. Syiddah vs Tawassuth vs Rakhawah</h4>
+          <ul>
+            <li>Syiddah (Tertahan): <span class="arab">أَجِدُ قَطٍ بَكَتْ</span></li>
+            <li>Tawassuth (Sedang): <span class="arab">لِنْ عُمَرَ</span></li>
+          </ul>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 3</h3>
+          <div class="video-wrapper"><iframe id="video-bab3" src="https://www.youtube.com/embed/zsmbbZ0ia4s" allowfullscreen></iframe></div>
+          <div class="video-shortcuts">
+            <button class="btn-seek" onclick="seekVideo('video-bab3', 'zsmbbZ0ia4s', 0)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Pengertian</button>
+            <button class="btn-seek" onclick="seekVideo('video-bab3', 'zsmbbZ0ia4s', 195)"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Hams</button>
+          </div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid single">
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 3</h4><p>Uji ketepatan analisis sifat huruf Anda.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab4">
+        <h2 class="bab-title">Bab 4: Hukum Nun Sukun dan Tanwin</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 4</h4>
+          <p>Aturan membaca ketika nun sukun (نْ) atau tanwin bertemu huruf tertentu. Terbagi menjadi: Idzhar, Idgham Bi, Idgham Bila, Iqlab, dan Ikhfa.</p>
+        </div>
+        <div class="subbab" id="subbab4-1">
+          <h3>Subbab 4.1: Idzhar Halqi (إِظْهَار حَلْقِي)</h3>
+          <p>Bertemu huruf: <span class="arab">ء ، هـ ، ع ، ح ، غ ، خ</span>. Dibaca jelas tanpa dengung. Contoh: <span class="arab">مِنْهُ</span></p>
+        </div>
+        <div class="subbab" id="subbab4-2">
+          <h3>Subbab 4.2: Idgham Bi Ghunnah (إِدْغَام بِغُنَّة)</h3>
+          <p>Bertemu huruf: <span class="arab">ي ، ن ، m ، و</span>. Lebur disertai dengung 2 harakat. Contoh: <span class="arab">مِنْ وَلِيٍّ</span></p>
+        </div>
+        <div class="subbab" id="subbab4-3">
+          <h3>Subbab 4.3: Idgham Bila Ghunnah (إِدْغَام بِلَا غُنَّة)</h3>
+          <p>Bertemu huruf: <span class="arab">ل ، ر</span>. Lebur penuh TANPA dengung. Contoh: <span class="arab">مِنْ رَبِّهِمْ</span></p>
+        </div>
+        <div class="subbab" id="subbab4-4">
+          <h3>Subbab 4.4: Iqlab (إِقْلَاب)</h3>
+          <p>Bertemu huruf: <span class="arab">ب</span>. Suara menukar jadi mim disertai dengung. Contoh: <span class="arab">أَنۢبِئْهُم</span></p>
+        </div>
+        <div class="subbab" id="subbab4-5">
+          <h3>Subbab 4.5: Ikhfa’ Haqiqi (إِخْفَاء حَقِيقِي)</h3>
+          <p>Bertemu 15 huruf sisa. Suara disamarkan mendekati huruf depan + dengung. Contoh: <span class="arab">أَنْفُسَكُمْ</span></p>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 4</h3>
+          <div class="video-wrapper"><iframe id="video-bab4" src="https://www.youtube.com/embed/ILw8rCzP_XE" allowfullscreen></iframe></div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid single">
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 4</h4><p>Uji kemahiran membedakan hukum Nun Sukun & Tanwin.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab5">
+        <h2 class="bab-title">Bab 5: Hukum Mim Sukun</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 5</h4>
+          <p>Hukum bacaan tersendiri dari mim sukun (مْ) saat bertemu huruf hijaiyah. Terbagi atas Ikhfa Syafawi, Izhar Syafawi, dan Idgham Mimi.</p>
+        </div>
+        <img src="https://i.ibb.co.com/sJyxqgct/foto-hukum-mim-mati.png" alt="Gambar Hukum Mim Mati" class="materi-image">
+        <div class="subbab" id="subbab5-1">
+          <h3>Subbab 5.1: Pengertian Mim Mati</h3>
+          <p>Huruf mim sukun (مْ) yang tidak berharakat hidup, memicu tiga jenis pembagian hukum bacaan.</p>
+        </div>
+        <div class="subbab" id="subbab5-2">
+          <h3>Subbab 5.2: Ikhfa Syafawi</h3>
+          <p>Apabila bertemu huruf <strong>ب</strong>. Dibaca samar di bibir + dengung 2 harakat. Contoh: <span class="arab">هُمْ بِهِ</span></p>
+        </div>
+        <div class="subbab" id="subbab5-3">
+          <h3>Subbab 5.3: Izhar Syafawi</h3>
+          <p>Apabila bertemu huruf selain Mim dan Ba'. Diucapkan jelas dan bersih tanpa dengung. Contoh: <span class="arab">أَنْعَمْتَ</span></p>
+        </div>
+        <div class="subbab" id="subbab5-4">
+          <h3>Subbab 5.4: Idgham Mimi / Mitslain</h3>
+          <p>Apabila bertemu sesama huruf <strong>م</strong>. Melebur dengan tasydid + dengung. Contoh: <span class="arab">كَمْ مِنْ</span></p>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 5</h3>
+          <div class="video-wrapper"><iframe id="video-bab5" src="https://www.youtube.com/embed/j8KFFgrz1iM" allowfullscreen></iframe></div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid">
+            <div class="activity-card game">
+              <div class="activity-info"><h4>🎮 Game Mim Sukun</h4><p>Kelompokkan hukum mim mati lewat game ketangkasan.</p></div>
+              <a href="https://gemini.google.com/share/991cad7eddde" target="_blank" class="activity-btn game-btn">Main Game</a>
+            </div>
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 5</h4><p>Latihan soal syafawi lengkap.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab6">
+        <h2 class="bab-title">Bab 6: Qolqolah & Lam</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 6</h4>
+          <p>Membahas getaran suara pantul (Qalqalah) serta kaidah tebal-tipisnya pengucapan huruf Lam pada lafadz Allah.</p>
+        </div>
+        <div class="subbab" id="subbab6-1">
+          <h3>Subbab 6.1: Pengertian Qolqolah</h3>
+          <p>Huruf qalqalah ada 5: <span class="arab">ق ، ط ، ب ، ج ، د</span>.</p>
+          <p><strong>a) Sughro:</strong> Sukun asli di tengah kata, pantulan tipis. Contoh: <span class="arab">يَقْطَعُونَ</span></p>
+          <p><strong>b) Kubro:</strong> Akhir kata karena waqaf, pantulan kuat. Contoh: <span class="arab">مُحِيطٌ</span></p>
+        </div>
+        <div class="subbab" id="subbab6-2">
+          <h3>Subbab 6.2: Lam Tarqiq dan Lam Tafkhim</h3>
+          <p><strong>a) Tafkhim (Tebal):</strong> Didahului fathah/dhammah. Contoh: <span class="arab">رَسُولُ اللّٰهِ</span></p>
+          <p><strong>b) Tarqiq (Tipis):</strong> Didahului kasrah. Contoh: <span class="arab">بِسْمِ اللّٰهِ</span></p>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 6</h3>
+          <div class="video-wrapper"><iframe id="video-bab6" src="https://www.youtube.com/embed/B2-OOTyVc4o" allowfullscreen></iframe></div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid">
+            <div class="activity-card game">
+              <div class="activity-info"><h4>🎮 Game Qolqolah</h4><p>Tantangan menebak pantulan suara tebal-tipis.</p></div>
+              <a href="https://gemini.google.com/share/5d47d083b9e4" target="_blank" class="activity-btn game-btn">Main Game</a>
+            </div>
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 6</h4><p>Uji materi qalqalah & lam jalalah.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bab-section" id="bab7">
+        <h2 class="bab-title">Bab 7: Hukum Mad</h2>
+        <div class="ringkasan">
+          <h4>Ringkasan Bab 7</h4>
+          <p>Kaidah memanjangkan suara ketukan vokal dengan tanda mad (Alif, Wawu sukun, Ya sukun).</p>
+        </div>
+        <div class="subbab" id="subbab7-1">
+          <h3>Subbab 7.1: Pengertian Mad</h3>
+          <p>Secara bahasa memanjangkan bacaan. Terbagi menjadi Mad Thabi'i dan cabang Mad Far'i.</p>
+        </div>
+        <div class="subbab" id="subbab7-2">
+          <h3>Subbab 7.2: Mad Thabi’i (Mad Asli)</h3>
+          <p>Dibaca konstan sepanjang 2 harakat. Contoh: <span class="arab">قَالَ</span>, <span class="arab">يَقُولُ</span></p>
+        </div>
+        <div class="subbab" id="subbab7-3">
+          <h3>Subbab 7.3: Mad Badal</h3>
+          <p>Hamzah bertemu huruf mad, dibaca 2 harakat. Contoh: <span class="arab">آمَنُوا</span></p>
+        </div>
+        <div class="subbab" id="subbab7-4">
+          <h3>Subbab 7.4: Mad Wajib Muttasil</h3>
+          <p>Mad thabi'i ketemu Hamzah dalam satu kata utuh, dibaca 4-5 harakat. Contoh: <span class="arab">جَاءَ</span></p>
+        </div>
+        <div class="subbab" id="subbab7-5">
+          <h3>Subbab 7.5: Mad Jaiz Munfasil</h3>
+          <p>Mad thabi'i bertemu Hamzah di kata terpisah berbeda, dibaca 4-5 harakat. Contoh: <span class="arab">فِيْ أَنْفُسِكُمْ</span></p>
+        </div>
+        <div class="subbab" id="subbab7-6">
+          <h3>Subbab 7.6: Mad ‘Aridh Lissukun</h3>
+          <p>Mad thabi'i di akhir ayat dibaca mati karena waqaf (2, 4, atau 6 harakat). Contoh: <span class="arab">الْعَالَمِينَ</span></p>
+        </div>
+        <div class="subbab" id="subbab7-7">
+          <h3>Subbab 7.7: Mad Lin</h3>
+          <p>Wawu/Ya sukun didahului fathah bertemu huruf waqaf. Contoh: <span class="arab">خَوْفٌ</span></p>
+        </div>
+        <div class="subbab" id="subbab7-8">
+          <h3>Subbab 7.8: Mad Lazim</h3>
+          <p>Mad bertemu tanda sukun asli/tasydid, wajib dibaca panjang 6 harakat penuh. Contoh: <span class="arab">الضَّالِّينَ</span></p>
+        </div>
+        <div class="video-container">
+          <h3>🎥 Video Pembelajaran Bab 7</h3>
+          <div class="video-wrapper"><iframe id="video-bab7" src="https://www.youtube.com/embed/yTpLs3aQ0n8" allowfullscreen></iframe></div>
+        </div>
+        <div class="activity-section">
+          <div class="activity-grid">
+            <div class="activity-card game">
+              <div class="activity-info"><h4>🎮 Game Hukum Mad</h4><p>Uji ketangkasan membedakan panjang mad.</p></div>
+              <a href="https://gemini.google.com/share/68b3f689e89a" target="_blank" class="activity-btn game-btn">Main Game</a>
+            </div>
+            <div class="activity-card quiz">
+              <div class="activity-info"><h4>📝 Kuis Bab 7</h4><p>Uji evaluasi akhir bab hukum mad.</p></div>
+              <a href="https://linktr.ee/alputjorima7" target="_blank" class="activity-btn quiz-btn">Mulai Kuis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <div class="ai-chat-widget">
+    <button class="ai-chat-button" onclick="toggleChat()" title="Tanya Asisten AI">🤖</button>
+    <div class="ai-chat-window" id="chat-window">
+      <div class="ai-chat-header">
+        <h3>🔍 Detektif AI Tajwid</h3>
+        <button class="ai-chat-close" onclick="toggleChat()">&times;</button>
+      </div>
+      <div class="ai-chat-messages" id="chat-messages">
+        <div class="chat-bubble ai">
+          Halo! Saya <strong>Detektif AI Tajwid</strong>. Silakan tanyakan istilah, hukum bacaan, atau cara membaca ayat Al-Qur'an di sini! 😉
+        </div>
+      </div>
+      <div class="ai-chat-input-area">
+        <input type="text" class="ai-chat-input" id="ai-question" placeholder="Contoh: Apa arti Mad Lin?" autocomplete="off">
+        <button class="ai-chat-send" onclick="tanyaAI()">Kirim</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Detektif Tajwid • Media Pembelajaran Ilmu Tajwid Interaktif Modern</p>
+  </footer>
+
+  <script>
+    // Tab switching logic
+    function switchBab(babId) {
+      const sections = document.querySelectorAll('.bab-section');
+      const links = document.querySelectorAll('.nav-link');
+      const navItems = document.querySelectorAll('.nav-item');
+
+      sections.forEach(s => s.classList.remove('active'));
+      links.forEach(l => l.classList.remove('active'));
+      navItems.forEach(item => item.classList.remove('active-accordion'));
+
+      const targetSection = document.getElementById(babId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        
+        links.forEach(link => {
+          if (link.getAttribute('onclick').includes(babId)) {
+            link.classList.add('active');
+            link.closest('.nav-item').classList.add('active-accordion');
+            
+            // Auto scroll horizontal menu agar item aktif selalu berada di tengah/terlihat di HP
+            if(window.innerWidth <= 992) {
+              link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            }
+          }
+        });
+
+        history.replaceState(null, null, '#' + babId);
+        
+        // Pemicu gulir dinamis adaptif layar HP / Desktop
+        const offsetAdjustment = window.innerWidth <= 992 ? 140 : 120;
+        window.scrollTo({
+          top: document.querySelector('.content-panel').offsetTop - offsetAdjustment,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function scrollToSubbab(babId, subbabId) {
+      switchBab(babId);
+
+      const subLinks = document.querySelectorAll('.subnav-link');
+      subLinks.forEach(link => link.classList.remove('active-sub'));
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active-sub');
+      }
+
+      const targetElement = document.getElementById(subbabId);
+      if (targetElement) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: targetElement.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }, 350);
+      }
+    }
+
+    function seekVideo(iframeId, videoId, startSeconds) {
+      const iframe = document.getElementById(iframeId);
+      if (iframe) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?start=${startSeconds}&autoplay=1`;
+      }
+    }
+
+    window.addEventListener('load', () => {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#bab')) {
+        const babId = hash.substring(1);
+        switchBab(babId);
+      }
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash;
+      if (hash && hash.startsWith('#bab')) {
+        const babId = hash.substring(1);
+        switchBab(babId);
+      }
+    });
+
+    // LOGIKA LOGIN OVERLAY (FORMALITAS)
+    const loginOverlay = document.getElementById("login-overlay");
+    const loginForm = document.getElementById("login-form");
+    const logoutBtn = document.getElementById("logout-btn");
+
+    if (sessionStorage.getItem("loggedIn") === "true") {
+      if (logoutBtn) logoutBtn.style.display = "inline-block";
+      if (loginOverlay) loginOverlay.style.display = "none";
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        sessionStorage.setItem("loggedIn", "true");
+        if (loginOverlay) {
+          loginOverlay.classList.add("hidden");
+          setTimeout(() => {
+            loginOverlay.style.display = "none";
+          }, 500);
+        }
+        if (logoutBtn) logoutBtn.style.display = "inline-block";
+      });
+    }
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        sessionStorage.removeItem("loggedIn");
+        if (loginOverlay) {
+          loginOverlay.style.display = "flex";
+          loginOverlay.offsetHeight;
+          loginOverlay.classList.remove("hidden");
+        }
+        logoutBtn.style.display = "none";
+      });
+    }
+
+    // LOGIKA WIDGET CHAT ASISTEN AI LOKAL
+    function toggleChat() {
+      const chatWindow = document.getElementById('chat-window');
+      chatWindow.classList.toggle('open');
+      if(chatWindow.classList.contains('open')) {
+        document.getElementById("ai-question").focus();
+      }
+    }
+
+    function tanyaAI() {
+      const inputField = document.getElementById("ai-question");
+      const messagesContainer = document.getElementById("chat-messages");
+      const kueriAsli = inputField.value.trim();
+      const kueriNormal = kueriAsli.toLowerCase();
+      
+      if (kueriNormal === "") return;
+
+      const userBubble = document.createElement("div");
+      userBubble.classList.add("chat-bubble", "user");
+      userBubble.textContent = kueriAsli;
+      messagesContainer.appendChild(userBubble);
+      inputField.value = "";
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      const pengetahuanAI = [
+        {
+          keyword: ["arti", "pengertian", "tajwid", "bahasa", "jawwada", "1.1", "definisi"],
+          jawaban: "Secara bahasa, <strong>Tajwid</strong> berasal dari kata Arab <i>jawwada</i> yang artinya memperindah atau memperbaiki. Secara istilah, tajwid adalah ilmu yang mengajarkan cara melafalkan huruf-huruf hijaiyah dengan benar sesuai makhraj dan sifat-sifatnya."
+        },
+        {
+          keyword: ["hukum", "wajib", "fardhu", "belajar", "kifayah", "ain", "1.2", "muslim"],
+          jawaban: "Hukum <strong>mempelajari ilmu tajwid</strong> secara teori adalah <strong>Fardhu Kifayah</strong>. Namun, hukum <strong>membaca Al-Qur'an dengan bertajwid</strong> adalah <strong>Fardhu 'Ain</strong> (wajib bagi setiap individu muslim tanpa terkecuali)."
+        },
+        {
+          keyword: ["tujuan", "manfaat", "tartil", "lahn", "ibadah", "1.3", "fungsi"],
+          jawaban: "<strong>Tujuan membaca Al-Qur'an dengan tajwid:</strong><br>1. Menjaga keaslian bacaan sesuai ajaran Rasulullah ﷺ.<br>2. Menghindari kesalahan fatal (<i>lahn</i>) yang mengubah arti.<br>3. Memperindah lantunan suara.<br>4. Meningkatkan kekhusyukan."
+        },
+        {
+          keyword: ["makhraj", "makhorijul", "makhroj", "tempat keluar", "hijaiyah", "2.1", "artikulasi"],
+          jawaban: "<strong>Makharijul Huruf</strong> adalah tempat-tempat terbentuknya suara huruf hijaiyah ketika diucapkan. Pemahaman makhraj sangat vital agar pengucapan huruf fasih dan maknanya tidak tertukar."
+        },
+        {
+          keyword: ["asy-syafatain", "syafatain", "bibir", "fa", "wau", "ba", "mim", "2.2"],
+          jawaban: "<strong>Asy-Syafatain</strong> artinya tempat keluar huruf dari Dua Bibir. Hurufnya:<br>• <b>Fa (ف)</b>: Gigi seri atas menyentuh bibir bawah bagian dalam.<br>• <b>Wau (و)</b>: Merenggangkan bibir dengan sedikit memoncongkannya.<br>• <b>Ba (ب)</b>: Kedua bibir dirapatkan secara kuat.<br>• <b>Mim (م)</b>: Kedua bibir dirapatkan secara ringan."
+        },
+        {
+          keyword: ["al-jauf", "jauf", "rongga", "mulut", "vokal"],
+          jawaban: "<strong>Al-Jauf</strong> adalah wilayah rongga mulut dan tenggorokan. Ini merupakan tempat keluarnya bunyi vokal panjang dari huruf-huruf mad (Alif, Wawu, Ya)."
+        },
+        {
+          keyword: ["al-halq", "halq", "tenggorokan", "halqi", "leher"],
+          jawaban: "<strong>Al-Halq</strong> adalah makhraj tenggorokan. Hurufnya disebut huruf halqi, yaitu: <b>Hamzah (ء), Ha' (هـ), 'Ain (ع), Ha' (ح), Ghain (غ), dan Kha' (خ)</b>."
+        },
+        {
+          keyword: ["al-lisan", "lisan", "lidah", "posisi lidah"],
+          jawaban: "<strong>Al-Lisan</strong> adalah makhraj lidah. Wilayah ini menghasilkan sebagian besar huruf hijaiyah seperti: <i>Qaf, Kaf, Jim, Syin, Ya, Dhad, Lam, Nun, Ra, Ta, Dal, Tha, Shad, Sin, Zai, Dzal, Tsa, Zha</i>."
+        },
+        {
+          keyword: ["al-khaisyum", "khaisyum", "hidung", "dengung", "ghunnah"],
+          jawaban: "<strong>Al-Khaisyum</strong> adalah pangkal hidung, yaitu rongga tempat keluarnya bunyi dengung tertahan (<b>Ghunnah</b>)."
+        },
+        {
+          keyword: ["sifat huruf", "karakter", "watak", "kepribadian huruf", "3.1", "lazimah", "aridhah"],
+          jawaban: "<strong>Sifat Huruf</strong> adalah karakteristik suara yang melekat pada huruf saat diucapkan, berfungsi membedakan huruf yang keluar dari makhraj yang sama. Dibagi menjadi <b>Sifat Lazimah</b> (tetap) dan <b>Sifat 'Aridhah</b> (kondisional)."
+        },
+        {
+          keyword: ["hams", "jahr", "mengalir udara", "tertahan udara", "3.2", "sakat"],
+          jawaban: "Berdasarkan hembusan udara saat melafalkan huruf:<br>• <b>Hams</b>: Udara mengalir bebas. Hurufnya terkumpul dalam kalimat: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>فَحَثَّهُ شَخْصٌ سَكَتَ</span>.<br>• <b>Jahr</b>: Udara tertahan (sisa huruf selain hams)."
+        },
+        {
+          keyword: ["syiddah", "tawassuth", "bainiyyah", "rakhawah", "aliran suara", "bakat", "umar"],
+          jawaban: "Berdasarkan aliran suara:<br>• <b>Syiddah</b>: Suara tertahan kuat (<span class='arab' style='font-size:1.2rem;'>أَجِدُ قَطٍ بَكَتْ</span>).<br>• <b>Tawassuth</b>: Di tengah-tengah / sedang (<span class='arab' style='font-size:1.2rem;'>لِنْ عُمَرَ</span>).<br>• <b>Rakhawah</b>: Suara mengalir bebas."
+        },
+        {
+          keyword: ["tafkhim", "tarqiq", "tebal", "tipis", "isti'la", "istifal", "3.3"],
+          jawaban: "Sifat 'Aridhah (kondisional) yang utama:<br>• <b>Tafkhim (Tebal)</b>: Menggema di mulut, mutlak pada huruf Isti'la (<span class='arab' style='font-size:1.2rem;'>خُصَّ ضَغْطٍ قِظْ</span>).<br>• <b>Tarqiq (Tipis)</b>: Suara ringan/tipis pada huruf Istifal."
+        },
+        {
+          keyword: ["nun sukun", "tanwin", "nun mati", "hukum nun", "4.1", "4.2", "4.3", "4.4", "4.5"],
+          jawaban: "Jika <b>Nun Sukun (نْ)</b> atau <b>Tanwin</b> bertemu huruf hijaiyah, hukumnya terbagi menjadi 5 cabang utama: 1. Idzhar Halqi, 2. Idgham Bi Ghunnah, 3. Idgham Bila Ghunnah, 4. Iqlab, dan 5. Ikhfa' Haqiqi."
+        },
+        {
+          keyword: ["idzhar halqi", "izhar halqi", "jelas", "tenggorokan", "tanpa dengung"],
+          jawaban: "<strong>Idzhar Halqi</strong> terjadi jika Nun Sukun/Tanwin bertemu huruf halqi (ء هـ ع ح غ kh). Cara baca: <b>Jelas, terang, tanpa dengung</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>مِنْهُ</span>."
+        },
+        {
+          keyword: ["idgham bi ghunnah", "idgham bighunnah", "yanmu", "melebur", "dengung"],
+          jawaban: "<strong>Idgham Bi Ghunnah</strong> terjadi jika bertemu huruf: <b>ي ، ن ، م ، و</b>. Cara baca: Melebur ke huruf berikutnya <b>disertai dengung di hidung selama 2 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>مِنْ وَلِيٍّ</span>."
+        },
+        {
+          keyword: ["idgham bila ghunnah", "idgham bilaghunnah", "lam ra", "tidak berdengung"],
+          jawaban: "<strong>Idgham Bila Ghunnah</strong> terjadi jika bertemu huruf: <b>ل dan ر</b>. Cara baca: Melebur secara penuh ke huruf depan <b>TANPA menggunakan dengung</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>مِنْ رَبِّهِمْ</span>."
+        },
+        {
+          keyword: ["iqlab", "menukar", "mengubah mim", "ba"],
+          jawaban: "<strong>Iqlab</strong> terjadi jika bertemu huruf <b>Ba' (ب)</b>. Cara baca: Mengubah suara nun mati menjadi <b>suara Mim (م) samar disertai dengung ditahan 2 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>أَنْبِئْهُمْ</span>."
+        },
+        {
+          keyword: ["ikhfa' haqiqi", "ikhfa haqiqi", "samar", "15 huruf", "anfusakum"],
+          jawaban: "<strong>Ikhfa' Haqiqi</strong> terjadi jika bertemu salah satu dari 15 huruf sisa. Cara baca: <b>Menyamarkan suara nun</b> menuju makhraj huruf di depannya disertai dengung ditahan 2 harakat. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>مِنْ قَبْلِ</span> atau <span class='arab' style='font-size:1.2rem;'>أَنْفُسَكُمْ</span>."
+        },
+        {
+          keyword: ["mim sukun", "mim mati", "hukum mim", "5.1", "5.2", "5.3", "5.4"],
+          jawaban: "Hukum <b>Mim Sukun (مْ)</b> dibagi menjadi 3 hukum utama: 1. Ikhfa Syafawi (bertemu Ba'), 2. Izhar Syafawi (bertemu selain Mim & Ba'), 3. Idgham Mimi/Mitslain (bertemu sesama Mim)."
+        },
+        {
+          keyword: ["ikhfa syafawi", "mim mati bertemu ba", "syafawi"],
+          jawaban: "<strong>Ikhfa Syafawi</strong> terjadi jika Mim Sukun bertemu huruf <b>Ba' (ب)</b>. Cara baca: Disamarkan di bibir <b>disertai dengung ditahan 2 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>هُمْ بِهِ</span>."
+        },
+        {
+          keyword: ["izhar syafawi", "izhar syafawi", "mim mati dibaca jelas"],
+          jawaban: "<strong>Izhar Syafawi</strong> terjadi jika Mim Sukun bertemu huruf <b>selain Mim (م) dan Ba' (ب)</b>. Cara baca: Diucapkan <b>jelas, bersih di bibir tanpa dengung</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>أَنْعَمْتَ</span>."
+        },
+        {
+          keyword: ["idgham mimi", "idgham mitslain", "mitslain", "sesama mim"],
+          jawaban: "<strong>Idgham Mimi (Mitslain)</strong> terjadi jika Mim Sukun bertemu sesama huruf <b>Mim (م)</b>. Cara baca: Melebur sempurna dengan tasydid dan <b>dengung ditahan 2 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>كَمْ مِنْ</span>."
+        },
+        {
+          keyword: ["qolqolah", "qalqalah", "pantulan", "mantul", "baju di toko", "qutbu jadin", "6.1", "sughro", "kubro"],
+          jawaban: "<strong>Qalqalah</strong> adalah memantulnya suara huruf karena berharakat mati/sukun asli atau sukun karena waqaf. Hurufnya: <b>ق ، ط ، ب ، ج ، د</b>. Dibagi menjadi <b>Sughro</b> (pantulan kecil di tengah kata) dan <b>Kubro</b> (pantulan besar di akhir karena waqaf)."
+        },
+        {
+          keyword: ["lam jalalah", "lam tafkhim", "lam tarqiq", "bismillah", "rasulullah", "6.2", "allah"],
+          jawaban: "Hukum Lam Jalalah (lafadz Allah):<br>• <b>Tafkhim (Tebal)</b>: Diawali fathah/dhammah (Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>رَسُولُ اللّٰهِ</span>).<br>• <b>Tarqiq (Tipis)</b>: Diawali kasrah (Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>بِسْمِ اللّٰهِ</span>)."
+        },
+        {
+          keyword: ["mad", "panjang", "huruf mad", "7.1", "harakat", "ketukan"],
+          jawaban: "<strong>Mad</strong> artinya memanjangkan suara artikulasi vokal. Huruf mad ada 3: <b>Alif (ا)</b> setelah fathah, <b>Wawu sukun (و)</b> setelah dhammah, dan <b>Ya sukun (ي)</b> setelah kasrah."
+        },
+        {
+          keyword: ["mad thabi'i", "mad thabii", "mad asli", "7.2", "2 harakat"],
+          jawaban: "<strong>Mad Thabi'i (Mad Asli)</strong> wajib dibaca sepanjang <b>2 harakat</b>. Terjadi ketika huruf vokal bertemu huruf mad dasar yang selaras. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>قَالَ</span>."
+        },
+        {
+          keyword: ["mad badal", "7.3", "hamzah bertemu mad"],
+          jawaban: "<strong>Mad Badal</strong> terjadi apabila ada huruf Hamzah bertemu dengan huruf mad dalam satu kata. Dibaca panjang <b>2 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>آمَنُوا</span>."
+        },
+        {
+          keyword: ["mad wajib muttasil", "muttasil", "satu kata", "7.4", "4 harakat", "5 harakat"],
+          jawaban: "<strong>Mad Wajib Muttasil</strong> terjadi ketika Mad Thabi'i bertemu dengan Hamzah <b>dalam satu kata yang sama (bersambung)</b>. Dibaca panjang <b>4-5 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>جَاءَ</span>."
+        },
+        {
+          keyword: ["mad jaiz munfasil", "munfasil", "kata terpisah", "7.5"],
+          jawaban: "<strong>Mad Jaiz Munfasil</strong> terjadi apabila Mad Thabi'i di akhir kata bertemu Hamzah di awal kata berikutnya <b>secara terpisah (dua kata)</b>. Dibaca panjang <b>4-5 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>فِيْ أَنْفُسِكُمْ</span>."
+        },
+        {
+          keyword: ["mad 'aridh lissukun", "aridh lissukun", "akhir ayat", "7.6", "waqaf"],
+          jawaban: "<strong>Mad 'Aridh Lissukun</strong> terjadi ketika ada Mad Thabi'i sebelum huruf hidup di akhir kalimat yang dibaca mati karena dihentikan (waqaf). Boleh dibaca <b>2, 4, atau 6 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>الْعَالَمِينَ</span>."
+        },
+        {
+          keyword: ["mad lin", "mad layyin", "lin", "layyin", "khouf", "bait", "7.7"],
+          jawaban: "<strong>Mad Lin</strong> terjadi apabila ada huruf <b>Wawu atau Ya sukun didahului huruf berharakat Fathah</b>, dan di depannya ada huruf hidup yang diwaqafkan. Boleh sepanjang <b>2, 4, atau 6 harakat</b>. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>خَوْفٌ</span>."
+        },
+        {
+          keyword: ["mad lazim", "6 harakat", "muthawwal", "7.8", "tasydid"],
+          jawaban: "<strong>Mad Lazim</strong> terjadi jika huruf Mad bertemu sukun asli atau huruf bertasydid dalam satu kalimat. Wajib dibaca panjang <b>6 harakat penuh</b> secara konsisten. Contoh: <span class='arab' style='font-size:1.2rem; padding:2px 8px;'>الضَّالِّينَ</span>."
+        }
+      ];
+
+      let jawabanTerbaik = null;
+      let skorTertinggi = 0;
+      const kataKueri = kueriNormal.split(/[\s,?.!]+/);
+
+      for (let item of pengetahuanAI) {
+        let skorSekarang = 0;
+        item.keyword.forEach(kunci => {
+          if (kueriNormal.includes(kunci)) { skorSekarang += 2; }
+          kataKueri.forEach(kata => { if (kata === kunci) { skorSekarang += 1; } });
+        });
+        if (skorSekarang > skorTertinggi) {
+          skorTertinggi = skorSekarang;
+          jawabanTerbaik = item.jawaban;
+        }
+      }
+
+      setTimeout(() => {
+        const aiBubble = document.createElement("div");
+        aiBubble.classList.add("chat-bubble", "ai");
+        if (skorTertinggi > 0 && jawabanTerbaik) {
+          aiBubble.innerHTML = jawabanTerbaik;
+        } else {
+          aiBubble.innerHTML = "Maaf, Detektif AI belum mendeteksi maksud spesifik dari kalimat tersebut. Coba ketik istilah inti saja seperti <i>'mad lin'</i>, <i>'idzhar halqi'</i>, <i>'mim sukun'</i>, <i>'qolqolah kubro'</i>, atau <i>'asy-syafatain'</i>! 😉";
+        }
+        messagesContainer.appendChild(aiBubble);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 400);
+    }
+
+    document.getElementById("ai-question").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") { tanyaAI(); }
+    });
+  </script>
+
+</body>
+</html>
